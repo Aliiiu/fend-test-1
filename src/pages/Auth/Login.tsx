@@ -5,14 +5,17 @@ import {
 	TextField,
 	PasswordField,
 } from '../../component/widget/form/FormComponent';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 	const { formState, register, handleSubmit, control } = useForm<FieldValues>({
 		mode: 'onChange',
 	});
+	let navigate = useNavigate();
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		console.log(data);
+		navigate('/');
 	};
 	return (
 		<div className='container mx-auto h-full flex'>

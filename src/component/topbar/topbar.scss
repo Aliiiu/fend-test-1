@@ -1,0 +1,9 @@
+.custom-search {
+	width: 400px;
+	.ant-input-search-button {
+		background-color: #39cdcc;
+		&:hover {
+			background-color: #39cdcc;
+		}
+	}
+}
