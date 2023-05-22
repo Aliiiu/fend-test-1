@@ -1,6 +1,8 @@
 import React from 'react';
 import { TUserState } from '../../store/reducers';
 import './table.scss';
+import CustomPopover from '../widget/popover/CustomPopover';
+import FilterPopover from '../widget/popover/FilterPopover';
 
 interface headerType {
 	title?: string;
@@ -26,7 +28,7 @@ const CustomTable = ({
 	allowRowClick = true,
 }: Props) => {
 	return (
-		<div className='table-wrapper'>
+		<div className='table-wrapper relative'>
 			<table>
 				{showHead && (
 					<thead>
@@ -34,7 +36,16 @@ const CustomTable = ({
 							{headers?.map((header) => {
 								return (
 									<th key={header.title} className='text-left'>
-										{header.title}
+										<div className='flex gap-4'>
+											{header.title}
+											{(header.title || '').length > 0 ? (
+												<CustomPopover showFilter={true}>
+													<FilterPopover />
+												</CustomPopover>
+											) : (
+												''
+											)}
+										</div>
 									</th>
 								);
 							})}
@@ -43,11 +54,7 @@ const CustomTable = ({
 				)}
 				<tbody>
 					{rows.map((row: TUserState) => (
-						<tr
-							key={row?.id}
-							onClick={allowRowClick ? () => onRowClick(row) : undefined}
-							// className={clsx({ clickable: allowRowClick })}
-						>
+						<tr key={row?.id}>
 							{headers?.map((header) => {
 								return (
 									<td key={header.title} className='text-left'>

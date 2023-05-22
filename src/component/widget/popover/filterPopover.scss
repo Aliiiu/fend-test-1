@@ -1,0 +1,101 @@
+$dull-blue: #21407d;
+$grayish-blue: #545f7d;
+$dull-navy: #7b8db0;
+
+.filter {
+	background: #ffffff;
+	border: 1px solid rgba(84, 95, 125, 0.14);
+	box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 4px;
+}
+
+.filter-form {
+	.input-wrapper {
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		margin-bottom: 20px;
+
+		label {
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 16px;
+			text-transform: capitalize;
+			margin-bottom: 6px;
+		}
+
+		select {
+			width: 100%;
+			padding: 12px 20px;
+			background: #ffffff;
+			border: 1px solid rgba(84, 95, 125, 0.15);
+			border-radius: 8px;
+
+			&:focus {
+				border: 2px solid rgba(33, 64, 125, 0.6);
+				color: $grayish-blue;
+			}
+
+			&::placeholder {
+				color: rgba($grayish-blue, 0.7);
+			}
+		}
+
+		select {
+			appearance: none;
+			color: $dull-navy;
+		}
+
+		.select-wrapper {
+			width: 100%;
+			position: relative;
+
+			svg {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: 100%;
+				right: 22px;
+			}
+		}
+	}
+	.form-btns {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+		padding-top: 10px;
+
+		button {
+			width: 98px;
+			height: 40px;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+			letter-spacing: 0.1em;
+			text-transform: capitalize;
+			border-radius: 8px;
+			cursor: pointer;
+
+			&.reset-btn {
+				border: 1px solid $dull-blue;
+				color: $dull-blue;
+				&:hover {
+					color: white;
+					background: $dull-blue;
+				}
+			}
+
+			&.filter-btn {
+				color: white;
+				background: #39cdcc;
+
+				&:hover {
+					border: 1px solid #39cdcc;
+					color: #39cdcc;
+					background: white;
+				}
+			}
+		}
+	}
+}

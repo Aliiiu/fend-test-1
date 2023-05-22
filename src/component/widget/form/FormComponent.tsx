@@ -8,15 +8,6 @@ import {
 	Merge,
 } from 'react-hook-form';
 
-enum InputEnum {
-	text = 'text',
-	email = 'email',
-	number = 'number',
-	file = 'file',
-	date = 'date',
-	time = 'time',
-}
-
 type TTextInput = {
 	label?: string;
 	type?: 'email' | 'text' | 'number' | 'file' | 'date' | 'time';
@@ -51,11 +42,11 @@ export const TextField = React.forwardRef<HTMLInputElement, TTextInput>(
 		ref: LegacyRef<HTMLInputElement>
 	) => {
 		return (
-			<div className='mb-6'>
+			<div className='mb-6 flex flex-col gap-2'>
 				{label && (
 					<label
 						htmlFor={name}
-						className='text-black font-light text-opacity-80'
+						className='text-primary font-medium capitalize text-sm'
 					>
 						{label}
 					</label>
@@ -79,7 +70,6 @@ export const TextField = React.forwardRef<HTMLInputElement, TTextInput>(
 						<input
 							type={type}
 							name={name}
-							// id={name}
 							placeholder={placeholder}
 							onChange={onChange}
 							ref={ref}

@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export const statusTag = (value: Date) => {
+export const statusTag = (value: string) => {
 	const now = moment();
 	const lastActive = moment(value);
 	const diffInDays = now.diff(lastActive, 'days');

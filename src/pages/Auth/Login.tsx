@@ -41,7 +41,6 @@ const LoginPage = () => {
 					>
 						<TextField
 							type='email'
-							control={control}
 							error={formState.errors['email']}
 							className='border-2 border-grey01 p-4 rounded-md w-full'
 							placeholder='Email'
