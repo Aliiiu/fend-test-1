@@ -13,6 +13,7 @@ module.exports = {
 				grey01: '#545f7d26',
 				grey02: '#213f7d1a',
 				grey03: '#213f7d0f',
+				grey04: '#545f7d33',
 				inactive: '#545f7d0f',
 				pending: '#e9b2001a',
 				blacklisted: '#E4033B1A',

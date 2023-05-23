@@ -7,7 +7,7 @@ const { Search } = Input;
 const Topbar = () => {
 	const onSearch = (value: string) => console.log(value);
 	return (
-		<div className='bg-white h-24 pl-7 pr-16 flex justify-between'>
+		<div className='bg-white h-24 pl-7 pr-16 flex header-shadow justify-between'>
 			<div className='flex gap-40 items-center'>
 				<img src='/svgs/lendsqr.svg' alt='lendsqr logo' />
 				<Search

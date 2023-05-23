@@ -32,7 +32,7 @@ const List = (props: TSidebarItem) => (
 
 const Sidebar = () => {
 	return (
-		<div className='bg-white w-72 pt-10 flex flex-col gap-9 overflow-y-auto'>
+		<div className='bg-white w-72 pt-10 flex sidebar-shadow flex-col gap-9 overflow-y-auto'>
 			<List
 				icon='/svgs/briefcase.svg'
 				list_name='Switch Organization'

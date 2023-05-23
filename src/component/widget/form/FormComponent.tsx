@@ -1,4 +1,10 @@
-import React, { ChangeEvent, ForwardedRef, LegacyRef, useState } from 'react';
+import React, {
+	ChangeEvent,
+	ForwardedRef,
+	LegacyRef,
+	ReactNode,
+	useState,
+} from 'react';
 import {
 	Control,
 	Controller,
@@ -79,6 +85,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TTextInput>(
 							} placeholder:text-sm ${className}`}
 						/>
 					))}
+				<small className='text-red01'>
+					{!error?.message ? '' : (error?.message as ReactNode)}
+				</small>
 			</div>
 		);
 	}
@@ -100,6 +109,9 @@ export const TextAreaField = React.forwardRef<HTMLTextAreaElement, TTextInput>(
 						error && 'border border-red-500'
 					} placeholder:text-sm ${className}`}
 				/>
+				<small className='text-red01'>
+					{!error?.message ? '' : (error?.message as ReactNode)}
+				</small>
 			</div>
 		);
 	}
@@ -111,46 +123,40 @@ export const PasswordField = React.forwardRef<HTMLInputElement, TTextInput>(
 		ref: LegacyRef<HTMLInputElement>
 	) => {
 		const [visible, setVisible] = useState(false);
+		console.log(error);
 
 		return (
-			// <input
-			// 	// type={visible ? 'text' : 'password'}
-			// 	type='text'
-			// 	// name={name}
-			// 	// id={name}
-			// 	placeholder={placeholder}
-			// 	// value={value}
-			// 	// onChange={onChange}
-			// 	ref={ref}
-			// 	className={`border-none w-full outline-none ${
-			// 		error && 'border-red-500'
-			// 	}`}
-			// />
-			<div
-				className={`border-2 border-grey01 p-4 flex items-center rounded-md w-full ${my}`}
-			>
-				<input
-					type={visible ? 'text' : 'password'}
-					name={name}
-					placeholder={placeholder}
-					value={value}
-					onChange={onChange}
-					ref={ref}
-					className={`border-none w-full outline-none ${
+			<div>
+				<div
+					className={`p-4 flex items-center rounded-md w-full ${
 						error && 'border-red-500'
-					}`}
-				/>
-				<span onClick={() => setVisible(!visible)}>
-					{!visible ? (
-						<small className='font-semibold text-cyan01 cursor-pointer'>
-							SHOW
-						</small>
-					) : (
-						<small className='font-semibold text-cyan01 cursor-pointer'>
-							HIDE
-						</small>
-					)}
-				</span>
+					} border-2`}
+				>
+					<input
+						type={visible ? 'text' : 'password'}
+						name={name}
+						placeholder={placeholder}
+						value={value}
+						onChange={onChange}
+						ref={ref}
+						className={`border-none w-full outline-none
+						}`}
+					/>
+					<span onClick={() => setVisible(!visible)}>
+						{!visible ? (
+							<small className='font-semibold text-cyan01 cursor-pointer'>
+								SHOW
+							</small>
+						) : (
+							<small className='font-semibold text-cyan01 cursor-pointer'>
+								HIDE
+							</small>
+						)}
+					</span>
+				</div>
+				<small className='text-red01'>
+					{!error?.message ? '' : (error?.message as ReactNode)}
+				</small>
 			</div>
 		);
 	}

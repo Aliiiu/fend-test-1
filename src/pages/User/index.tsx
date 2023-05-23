@@ -5,7 +5,7 @@ import { userCardDetails } from '../../constants/userCardData';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchUsers } from '../../store/reducers/userSlice';
 import { TUserState } from '../../store/reducers';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Pagination from '../../component/pagination';
 import UserStatus from '../../component/widget/status/UserStatus';
 import { statusTag } from '../../utils/helper';
@@ -20,10 +20,11 @@ const UserPage = () => {
 	);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	let location = useLocation();
 	const popoverData = [
 		{
 			name: 'View Details',
-			action: (id?: string) => navigate(`/user/${id}`),
+			action: (id?: string) => navigate(`/users/${id}`),
 			icon: EyeIcon,
 		},
 		{
@@ -99,28 +100,33 @@ const UserPage = () => {
 	};
 
 	return (
-		<div className='pt-10'>
-			<div className='flex gap-7'>
-				{userCardDetails.map((item) => (
-					<div
-						key={item.title}
-						className='pt-5 pb-8 flex flex-col gap-3 bg-white flex-1 px-7 border border-grey03 rounded-md card-shadow'
-					>
-						<img src={item.iconUrl} alt='icon' className=' w-8' />
-						<h3 className='uppercase'>{item.title}</h3>
-						<h1 className='font-semibold text-2xl'>{item.stat}</h1>
-					</div>
-				))}
-			</div>
-			<div className='mt-10'>
-				<CustomTable
-					rows={userData}
-					headers={UserTableHeaders}
-					showHead={true}
-					// allowRowClick={true}
-					onRowClick={handleNavigate}
-				/>
-				<Pagination />
+		<div>
+			<h2 className='font-medium text-2xl capitalize'>
+				{location.pathname.replace('/', '')}
+			</h2>
+			<div className='pt-10'>
+				<div className='flex gap-7'>
+					{userCardDetails.map((item) => (
+						<div
+							key={item.title}
+							className='pt-5 pb-8 flex flex-col gap-3 bg-white flex-1 px-7 border border-grey03 rounded-md card-shadow'
+						>
+							<img src={item.iconUrl} alt='icon' className=' w-8' />
+							<h3 className='uppercase'>{item.title}</h3>
+							<h1 className='font-semibold text-2xl'>{item.stat}</h1>
+						</div>
+					))}
+				</div>
+				<div className='mt-10'>
+					<CustomTable
+						rows={userData}
+						headers={UserTableHeaders}
+						showHead={true}
+						// allowRowClick={true}
+						onRowClick={handleNavigate}
+					/>
+					<Pagination />
+				</div>
 			</div>
 		</div>
 	);
